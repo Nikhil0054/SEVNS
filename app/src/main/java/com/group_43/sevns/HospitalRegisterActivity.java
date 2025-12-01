@@ -227,6 +227,7 @@ public class HospitalRegisterActivity extends AppCompatActivity {
                                 .addOnSuccessListener(a -> {
                                     Toast.makeText(this, "Hospital Registered Successfully!", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(this, HospitalLoginActivity.class));
+                                    finish();
                                 })
                                 .addOnFailureListener(e ->
                                         Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show()

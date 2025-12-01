@@ -107,6 +107,7 @@ public class DriverRegister extends AppCompatActivity {
                                 .addOnSuccessListener(a -> {
                                     Toast.makeText(this, "Driver Registered Successfully!", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(this, DriverLoginActivity.class));
+                                    finish();
                                 })
                                 .addOnFailureListener(e ->
                                         Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show()

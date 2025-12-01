@@ -82,7 +82,7 @@ public class HospitalLoginActivity extends AppCompatActivity {
 
                             Toast.makeText(this, "Hospital Login Successful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(HospitalLoginActivity.this, HospitalDashboardActivity.class));
-
+                            finish();
                         } else {
                             FirebaseAuth.getInstance().signOut();
                             Toast.makeText(this, "Not a hospital account", Toast.LENGTH_SHORT).show();

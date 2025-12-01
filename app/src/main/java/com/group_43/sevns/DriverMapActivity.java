@@ -15,6 +15,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -28,7 +30,7 @@ public class DriverMapActivity extends AppCompatActivity {
     private MapView map;
     private TextView tvEta;
     private Button btnComplete, btndriverSignOut;
-    private String driverId;
+    private String Driver_ID, DocumentId;
     private AccidentReport assignedReport;
 
     private final int REQUEST_PERMISSIONS_CODE = 1;
@@ -54,28 +56,40 @@ public class DriverMapActivity extends AppCompatActivity {
         btndriverSignOut.setOnClickListener(v -> signOut());
     }
 
-    @SuppressLint("SetTextI18n")
-    private void findAndDisplayAssignedReport() {
-        for (AccidentReport report : SimulatedDatabase.getActiveReports()) {
-            if (driverId != null && driverId.equals(report.getDriverId()) && "Dispatched".equals(report.getStatus())) {
-                assignedReport = report;
-                break;
-            }
-        }
-        if (assignedReport != null) {
-            tvEta.setText("Accident Location Found! Plotting route...");
-            btnComplete.setEnabled(true);
-            setupMapAndRoute();
-        } else {
-            tvEta.setText("No assigned case to you.");
-            Toast.makeText(this, "No assigned Case.", Toast.LENGTH_LONG).show();
-            btnComplete.setEnabled(false);
-        }
-    }
-
     private void signOut() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
+    @SuppressLint("SetTextI18n")
+
+    private void findAndDisplayAssignedReport() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Accidents")
+
+                .whereEqualTo("status", "Acknowledged")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                        // Assuming only one report is assigned
+                        DocumentSnapshot document = task.getResult().getDocuments().get(0);
+                        assignedReport = document.toObject(AccidentReport.class);
+                        DocumentId = document.getId();
+
+                        tvEta.setText("Accident Location Found! Plotting route...");
+                        btnComplete.setEnabled(true);
+                        setupMapAndRoute();
+                    } else {
+                        tvEta.setText("No assigned case to you.");
+                        Toast.makeText(this, "No assigned Case.", Toast.LENGTH_LONG).show();
+                        btnComplete.setEnabled(false);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error fetching data: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
     }
 
     private void setupMapAndRoute() {
@@ -103,12 +117,24 @@ public class DriverMapActivity extends AppCompatActivity {
     }
 
     private void markReportCompleted() {
-        if (assignedReport != null) {
-            assignedReport.setStatus("Completed");
-            SimulatedDatabase.updateReport(assignedReport);
-            Toast.makeText(this, "Report marked COMPLETED.", Toast.LENGTH_LONG).show();
-            finish();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        if (assignedReport == null) {
+            Toast.makeText(this, "No assigned case to you.", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        db.collection("Accidents")
+                .document(DocumentId)
+                .update(
+                        "status", "Completed"
+                )
+                .addOnSuccessListener(unused ->
+                        Toast.makeText(this, "Report marked COMPLETED.", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());
+
+        findAndDisplayAssignedReport();
     }
 
     private void requestPermissionsIfNecessary(String[] permissions) {
@@ -137,4 +163,3 @@ public class DriverMapActivity extends AppCompatActivity {
         }
     }
 }
-

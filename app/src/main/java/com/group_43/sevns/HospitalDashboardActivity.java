@@ -59,6 +59,7 @@ public class HospitalDashboardActivity extends AppCompatActivity {
     private void signOut() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     //FETCH NEAREST & ALL PENDING ACCIDENTS

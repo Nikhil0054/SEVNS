@@ -68,7 +68,7 @@ public class DriverLoginActivity extends AppCompatActivity {
 
                             Toast.makeText(this, "Driver Login Successful", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(DriverLoginActivity.this, DriverMapActivity.class));
-
+                            finish();
                         } else {
                             FirebaseAuth.getInstance().signOut();
                             Toast.makeText(this, "Not a Driver account", Toast.LENGTH_SHORT).show();
