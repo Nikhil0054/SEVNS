@@ -44,6 +44,10 @@
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\drawable\\reportaccident.jpg"
     },
     {
+        "merged": "com.group_43.sevns.app-debug-52:/layout_activity_main.xml.flat",
+        "source": "com.group_43.sevns.app-main-54:/layout/activity_main.xml"
+    },
+    {
         "merged": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-debug-52:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\drawable\\ic_launcher_foreground.xml"
     },
@@ -158,9 +162,5 @@
     {
         "merged": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-debug-52:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\xml\\data_extraction_rules.xml"
-    },
-    {
-        "merged": "com.group_43.sevns.app-debug-52:/layout_driver_screen.xml.flat",
-        "source": "com.group_43.sevns.app-main-54:/layout/driver_screen.xml"
     }
 ]

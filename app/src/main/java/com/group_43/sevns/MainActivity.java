@@ -41,4 +41,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, DriverRegister.class));
         });
         }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);   // Prevents going to previous activity
+    }
 }

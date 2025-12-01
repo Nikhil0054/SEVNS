@@ -53,6 +53,7 @@ public class DriverMapActivity extends AppCompatActivity {
 
         findAndDisplayAssignedReport();
         btnComplete.setOnClickListener(v -> markReportCompleted());
+        btnComplete.setEnabled(false);
         btndriverSignOut.setOnClickListener(v -> signOut());
     }
 
@@ -69,7 +70,7 @@ public class DriverMapActivity extends AppCompatActivity {
 
         db.collection("Accidents")
 
-                .whereEqualTo("status", "Acknowledged")
+                .whereEqualTo("status", "Acknowleged")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {
