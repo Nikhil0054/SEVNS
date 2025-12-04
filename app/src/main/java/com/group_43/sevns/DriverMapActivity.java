@@ -90,7 +90,7 @@ public class DriverMapActivity extends AppCompatActivity {
 
         tvEta = findViewById(R.id.tvEta);
         btnComplete = findViewById(R.id.btnComplete);
-        btndriverSignOut = findViewById(R.id.toolbar);
+        btndriverSignOut = findViewById(R.id.btndriverSignOut);
         map = findViewById(R.id.map);
 
         // Check for null views
