@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -26,11 +27,15 @@ public final class HospitalDashboardBinding implements ViewBinding {
   @NonNull
   public final ListView listReports;
 
+  @NonNull
+  public final TextView textView2;
+
   private HospitalDashboardBinding(@NonNull LinearLayout rootView, @NonNull Button btnsignOut,
-      @NonNull ListView listReports) {
+      @NonNull ListView listReports, @NonNull TextView textView2) {
     this.rootView = rootView;
     this.btnsignOut = btnsignOut;
     this.listReports = listReports;
+    this.textView2 = textView2;
   }
 
   @Override
@@ -72,7 +77,14 @@ public final class HospitalDashboardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new HospitalDashboardBinding((LinearLayout) rootView, btnsignOut, listReports);
+      id = R.id.textView2;
+      TextView textView2 = ViewBindings.findChildViewById(rootView, id);
+      if (textView2 == null) {
+        break missingId;
+      }
+
+      return new HospitalDashboardBinding((LinearLayout) rootView, btnsignOut, listReports,
+          textView2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

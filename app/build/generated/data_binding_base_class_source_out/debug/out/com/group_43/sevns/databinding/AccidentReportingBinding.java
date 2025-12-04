@@ -4,15 +4,18 @@ package com.group_43.sevns.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.group_43.sevns.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -20,45 +23,65 @@ import java.lang.String;
 
 public final class AccidentReportingBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
-  public final TextView addressTextView;
+  public final TextInputEditText addressTextView;
 
   @NonNull
-  public final Button btnReport;
+  public final MaterialButton btnReport;
 
   @NonNull
-  public final EditText editDesc;
+  public final TextInputLayout descInputLayout;
 
   @NonNull
-  public final EditText editPhone;
+  public final TextInputEditText editDesc;
 
   @NonNull
-  public final ImageView imageView;
+  public final TextInputEditText editPhone;
 
   @NonNull
   public final ImageView imageView4;
 
   @NonNull
+  public final TextInputLayout locationInputLayout;
+
+  @NonNull
+  public final TextInputLayout phoneInputLayout;
+
+  @NonNull
+  public final MaterialCardView statusCard;
+
+  @NonNull
+  public final MaterialToolbar toolbar;
+
+  @NonNull
   public final TextView tvStatus;
 
-  private AccidentReportingBinding(@NonNull ScrollView rootView, @NonNull TextView addressTextView,
-      @NonNull Button btnReport, @NonNull EditText editDesc, @NonNull EditText editPhone,
-      @NonNull ImageView imageView, @NonNull ImageView imageView4, @NonNull TextView tvStatus) {
+  private AccidentReportingBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull TextInputEditText addressTextView, @NonNull MaterialButton btnReport,
+      @NonNull TextInputLayout descInputLayout, @NonNull TextInputEditText editDesc,
+      @NonNull TextInputEditText editPhone, @NonNull ImageView imageView4,
+      @NonNull TextInputLayout locationInputLayout, @NonNull TextInputLayout phoneInputLayout,
+      @NonNull MaterialCardView statusCard, @NonNull MaterialToolbar toolbar,
+      @NonNull TextView tvStatus) {
     this.rootView = rootView;
     this.addressTextView = addressTextView;
     this.btnReport = btnReport;
+    this.descInputLayout = descInputLayout;
     this.editDesc = editDesc;
     this.editPhone = editPhone;
-    this.imageView = imageView;
     this.imageView4 = imageView4;
+    this.locationInputLayout = locationInputLayout;
+    this.phoneInputLayout = phoneInputLayout;
+    this.statusCard = statusCard;
+    this.toolbar = toolbar;
     this.tvStatus = tvStatus;
   }
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -84,32 +107,32 @@ public final class AccidentReportingBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.addressTextView;
-      TextView addressTextView = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText addressTextView = ViewBindings.findChildViewById(rootView, id);
       if (addressTextView == null) {
         break missingId;
       }
 
       id = R.id.btnReport;
-      Button btnReport = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnReport = ViewBindings.findChildViewById(rootView, id);
       if (btnReport == null) {
         break missingId;
       }
 
+      id = R.id.descInputLayout;
+      TextInputLayout descInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (descInputLayout == null) {
+        break missingId;
+      }
+
       id = R.id.editDesc;
-      EditText editDesc = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText editDesc = ViewBindings.findChildViewById(rootView, id);
       if (editDesc == null) {
         break missingId;
       }
 
       id = R.id.editPhone;
-      EditText editPhone = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText editPhone = ViewBindings.findChildViewById(rootView, id);
       if (editPhone == null) {
-        break missingId;
-      }
-
-      id = R.id.imageView;
-      ImageView imageView = ViewBindings.findChildViewById(rootView, id);
-      if (imageView == null) {
         break missingId;
       }
 
@@ -119,14 +142,39 @@ public final class AccidentReportingBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.locationInputLayout;
+      TextInputLayout locationInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (locationInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.phoneInputLayout;
+      TextInputLayout phoneInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (phoneInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.statusCard;
+      MaterialCardView statusCard = ViewBindings.findChildViewById(rootView, id);
+      if (statusCard == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar;
+      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
       id = R.id.tvStatus;
       TextView tvStatus = ViewBindings.findChildViewById(rootView, id);
       if (tvStatus == null) {
         break missingId;
       }
 
-      return new AccidentReportingBinding((ScrollView) rootView, addressTextView, btnReport,
-          editDesc, editPhone, imageView, imageView4, tvStatus);
+      return new AccidentReportingBinding((CoordinatorLayout) rootView, addressTextView, btnReport,
+          descInputLayout, editDesc, editPhone, imageView4, locationInputLayout, phoneInputLayout,
+          statusCard, toolbar, tvStatus);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

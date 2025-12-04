@@ -16,10 +16,6 @@
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\layout\\hospital_dashboard.xml"
     },
     {
-        "merged": "com.group_43.sevns.app-mergeDebugResources-51:/layout/activity_main.xml",
-        "source": "com.group_43.sevns.app-main-54:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-mergeDebugResources-51:\\layout\\activity_accident_status.xml",
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\layout\\activity_accident_status.xml"
     },
@@ -32,11 +28,19 @@
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\layout\\accident_reporting.xml"
     },
     {
+        "merged": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-mergeDebugResources-51:\\layout\\report_list_item.xml",
+        "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\layout\\report_list_item.xml"
+    },
+    {
         "merged": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-mergeDebugResources-51:\\layout\\hospital_register.xml",
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\layout\\hospital_register.xml"
     },
     {
         "merged": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-mergeDebugResources-51:\\layout\\driver_screen.xml",
         "source": "C:\\Users\\Aman\\.gradle\\daemon\\8.13\\com.group_43.sevns.app-main-54:\\layout\\driver_screen.xml"
+    },
+    {
+        "merged": "com.group_43.sevns.app-mergeDebugResources-51:/layout/driver_screen.xml",
+        "source": "com.group_43.sevns.app-main-54:/layout/driver_screen.xml"
     }
 ]

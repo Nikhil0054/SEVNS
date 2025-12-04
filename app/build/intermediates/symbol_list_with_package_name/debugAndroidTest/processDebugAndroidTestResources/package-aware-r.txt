@@ -1,3 +1,0 @@
-com.group_43.sevns.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

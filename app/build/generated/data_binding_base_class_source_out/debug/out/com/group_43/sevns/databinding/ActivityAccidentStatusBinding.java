@@ -4,15 +4,19 @@ package com.group_43.sevns.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.group_43.sevns.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -20,37 +24,51 @@ import java.lang.String;
 
 public final class ActivityAccidentStatusBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnRefresh;
+  public final AppBarLayout appBarLayout;
 
   @NonNull
-  public final EditText editCaseid;
+  public final MaterialButton btnRefresh;
+
+  @NonNull
+  public final TextInputLayout caseIdInputLayout;
+
+  @NonNull
+  public final TextInputEditText editCaseid;
 
   @NonNull
   public final ImageView imageView3;
 
   @NonNull
-  public final TextView tvStatusOnly;
+  public final MaterialCardView statusCard;
 
   @NonNull
-  public final TextView tvTrackingId;
+  public final MaterialToolbar toolbar;
 
-  private ActivityAccidentStatusBinding(@NonNull LinearLayout rootView, @NonNull Button btnRefresh,
-      @NonNull EditText editCaseid, @NonNull ImageView imageView3, @NonNull TextView tvStatusOnly,
-      @NonNull TextView tvTrackingId) {
+  @NonNull
+  public final TextView tvStatusOnly;
+
+  private ActivityAccidentStatusBinding(@NonNull ConstraintLayout rootView,
+      @NonNull AppBarLayout appBarLayout, @NonNull MaterialButton btnRefresh,
+      @NonNull TextInputLayout caseIdInputLayout, @NonNull TextInputEditText editCaseid,
+      @NonNull ImageView imageView3, @NonNull MaterialCardView statusCard,
+      @NonNull MaterialToolbar toolbar, @NonNull TextView tvStatusOnly) {
     this.rootView = rootView;
+    this.appBarLayout = appBarLayout;
     this.btnRefresh = btnRefresh;
+    this.caseIdInputLayout = caseIdInputLayout;
     this.editCaseid = editCaseid;
     this.imageView3 = imageView3;
+    this.statusCard = statusCard;
+    this.toolbar = toolbar;
     this.tvStatusOnly = tvStatusOnly;
-    this.tvTrackingId = tvTrackingId;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -75,14 +93,26 @@ public final class ActivityAccidentStatusBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.appBarLayout;
+      AppBarLayout appBarLayout = ViewBindings.findChildViewById(rootView, id);
+      if (appBarLayout == null) {
+        break missingId;
+      }
+
       id = R.id.btnRefresh;
-      Button btnRefresh = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnRefresh = ViewBindings.findChildViewById(rootView, id);
       if (btnRefresh == null) {
         break missingId;
       }
 
+      id = R.id.caseIdInputLayout;
+      TextInputLayout caseIdInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (caseIdInputLayout == null) {
+        break missingId;
+      }
+
       id = R.id.editCaseid;
-      EditText editCaseid = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText editCaseid = ViewBindings.findChildViewById(rootView, id);
       if (editCaseid == null) {
         break missingId;
       }
@@ -93,20 +123,26 @@ public final class ActivityAccidentStatusBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.statusCard;
+      MaterialCardView statusCard = ViewBindings.findChildViewById(rootView, id);
+      if (statusCard == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar;
+      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
       id = R.id.tvStatusOnly;
       TextView tvStatusOnly = ViewBindings.findChildViewById(rootView, id);
       if (tvStatusOnly == null) {
         break missingId;
       }
 
-      id = R.id.tvTrackingId;
-      TextView tvTrackingId = ViewBindings.findChildViewById(rootView, id);
-      if (tvTrackingId == null) {
-        break missingId;
-      }
-
-      return new ActivityAccidentStatusBinding((LinearLayout) rootView, btnRefresh, editCaseid,
-          imageView3, tvStatusOnly, tvTrackingId);
+      return new ActivityAccidentStatusBinding((ConstraintLayout) rootView, appBarLayout,
+          btnRefresh, caseIdInputLayout, editCaseid, imageView3, statusCard, toolbar, tvStatusOnly);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

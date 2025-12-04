@@ -4,15 +4,16 @@ package com.group_43.sevns.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.group_43.sevns.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -20,10 +21,13 @@ import java.lang.String;
 
 public final class HospitalRegisterBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
-  public final Button btnRegisterHospital;
+  public final TextInputLayout addressInputLayout;
+
+  @NonNull
+  public final MaterialButton btnRegisterHospital;
 
   @NonNull
   public final TextInputEditText editHospitalAddress;
@@ -41,30 +45,59 @@ public final class HospitalRegisterBinding implements ViewBinding {
   public final TextInputEditText editHospitalPhone;
 
   @NonNull
+  public final TextInputLayout emailInputLayout;
+
+  @NonNull
   public final ImageView imageView7;
 
   @NonNull
-  public final TextView tvHospitalLocation;
+  public final TextInputLayout locationInputLayout;
 
-  private HospitalRegisterBinding(@NonNull ScrollView rootView, @NonNull Button btnRegisterHospital,
+  @NonNull
+  public final TextInputLayout nameInputLayout;
+
+  @NonNull
+  public final TextInputLayout passwordInputLayout;
+
+  @NonNull
+  public final TextInputLayout phoneInputLayout;
+
+  @NonNull
+  public final MaterialToolbar toolbar;
+
+  @NonNull
+  public final TextInputEditText tvHospitalLocation;
+
+  private HospitalRegisterBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull TextInputLayout addressInputLayout, @NonNull MaterialButton btnRegisterHospital,
       @NonNull TextInputEditText editHospitalAddress, @NonNull TextInputEditText editHospitalEmail,
       @NonNull TextInputEditText editHospitalName, @NonNull TextInputEditText editHospitalPassword,
-      @NonNull TextInputEditText editHospitalPhone, @NonNull ImageView imageView7,
-      @NonNull TextView tvHospitalLocation) {
+      @NonNull TextInputEditText editHospitalPhone, @NonNull TextInputLayout emailInputLayout,
+      @NonNull ImageView imageView7, @NonNull TextInputLayout locationInputLayout,
+      @NonNull TextInputLayout nameInputLayout, @NonNull TextInputLayout passwordInputLayout,
+      @NonNull TextInputLayout phoneInputLayout, @NonNull MaterialToolbar toolbar,
+      @NonNull TextInputEditText tvHospitalLocation) {
     this.rootView = rootView;
+    this.addressInputLayout = addressInputLayout;
     this.btnRegisterHospital = btnRegisterHospital;
     this.editHospitalAddress = editHospitalAddress;
     this.editHospitalEmail = editHospitalEmail;
     this.editHospitalName = editHospitalName;
     this.editHospitalPassword = editHospitalPassword;
     this.editHospitalPhone = editHospitalPhone;
+    this.emailInputLayout = emailInputLayout;
     this.imageView7 = imageView7;
+    this.locationInputLayout = locationInputLayout;
+    this.nameInputLayout = nameInputLayout;
+    this.passwordInputLayout = passwordInputLayout;
+    this.phoneInputLayout = phoneInputLayout;
+    this.toolbar = toolbar;
     this.tvHospitalLocation = tvHospitalLocation;
   }
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -89,8 +122,14 @@ public final class HospitalRegisterBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.addressInputLayout;
+      TextInputLayout addressInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (addressInputLayout == null) {
+        break missingId;
+      }
+
       id = R.id.btnRegisterHospital;
-      Button btnRegisterHospital = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnRegisterHospital = ViewBindings.findChildViewById(rootView, id);
       if (btnRegisterHospital == null) {
         break missingId;
       }
@@ -125,21 +164,59 @@ public final class HospitalRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.emailInputLayout;
+      TextInputLayout emailInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (emailInputLayout == null) {
+        break missingId;
+      }
+
       id = R.id.imageView7;
       ImageView imageView7 = ViewBindings.findChildViewById(rootView, id);
       if (imageView7 == null) {
         break missingId;
       }
 
+      id = R.id.locationInputLayout;
+      TextInputLayout locationInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (locationInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.nameInputLayout;
+      TextInputLayout nameInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (nameInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.passwordInputLayout;
+      TextInputLayout passwordInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (passwordInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.phoneInputLayout;
+      TextInputLayout phoneInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (phoneInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar;
+      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
       id = R.id.tvHospitalLocation;
-      TextView tvHospitalLocation = ViewBindings.findChildViewById(rootView, id);
+      TextInputEditText tvHospitalLocation = ViewBindings.findChildViewById(rootView, id);
       if (tvHospitalLocation == null) {
         break missingId;
       }
 
-      return new HospitalRegisterBinding((ScrollView) rootView, btnRegisterHospital,
-          editHospitalAddress, editHospitalEmail, editHospitalName, editHospitalPassword,
-          editHospitalPhone, imageView7, tvHospitalLocation);
+      return new HospitalRegisterBinding((CoordinatorLayout) rootView, addressInputLayout,
+          btnRegisterHospital, editHospitalAddress, editHospitalEmail, editHospitalName,
+          editHospitalPassword, editHospitalPhone, emailInputLayout, imageView7,
+          locationInputLayout, nameInputLayout, passwordInputLayout, phoneInputLayout, toolbar,
+          tvHospitalLocation);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

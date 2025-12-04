@@ -1,2 +1,0 @@
-com.group_43.sevns.test:style/WhiteBackgroundTheme = 0x7f010001
-com.group_43.sevns.test:style/WhiteBackgroundDialogTheme = 0x7f010000

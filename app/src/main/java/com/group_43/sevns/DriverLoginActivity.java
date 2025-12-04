@@ -62,17 +62,15 @@ public class DriverLoginActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(document -> {
 
-                        String storedUid = document.getString("Driver_ID");
+                    if (document.exists()) {
+                        Toast.makeText(this, "Driver Login Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(DriverLoginActivity.this, DriverMapActivity.class));
+                        finish();
 
-                        if (storedUid != null && storedUid.startsWith("DRIVER")) {
-
-                            Toast.makeText(this, "Driver Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(DriverLoginActivity.this, DriverMapActivity.class));
-                            finish();
-                        } else {
-                            FirebaseAuth.getInstance().signOut();
-                            Toast.makeText(this, "Not a Driver account", Toast.LENGTH_SHORT).show();
-                        }
+                    } else {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(this, "Not a Driver account", Toast.LENGTH_SHORT).show();
+                    }
 
                 })
                 .addOnFailureListener(e -> {

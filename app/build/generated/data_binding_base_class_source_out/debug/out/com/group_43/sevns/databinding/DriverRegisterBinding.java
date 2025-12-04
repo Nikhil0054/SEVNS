@@ -4,14 +4,16 @@ package com.group_43.sevns.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.group_43.sevns.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -19,10 +21,10 @@ import java.lang.String;
 
 public final class DriverRegisterBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
-  public final Button btnRegisterDriver;
+  public final MaterialButton btnRegisterDriver;
 
   @NonNull
   public final TextInputEditText editDriverEmail;
@@ -37,24 +39,47 @@ public final class DriverRegisterBinding implements ViewBinding {
   public final TextInputEditText editDriverPhone;
 
   @NonNull
+  public final TextInputLayout emailInputLayout;
+
+  @NonNull
   public final ImageView imageView7;
 
-  private DriverRegisterBinding(@NonNull ScrollView rootView, @NonNull Button btnRegisterDriver,
-      @NonNull TextInputEditText editDriverEmail, @NonNull TextInputEditText editDriverName,
-      @NonNull TextInputEditText editDriverPassword, @NonNull TextInputEditText editDriverPhone,
-      @NonNull ImageView imageView7) {
+  @NonNull
+  public final TextInputLayout nameInputLayout;
+
+  @NonNull
+  public final TextInputLayout passwordInputLayout;
+
+  @NonNull
+  public final TextInputLayout phoneInputLayout;
+
+  @NonNull
+  public final MaterialToolbar toolbar;
+
+  private DriverRegisterBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull MaterialButton btnRegisterDriver, @NonNull TextInputEditText editDriverEmail,
+      @NonNull TextInputEditText editDriverName, @NonNull TextInputEditText editDriverPassword,
+      @NonNull TextInputEditText editDriverPhone, @NonNull TextInputLayout emailInputLayout,
+      @NonNull ImageView imageView7, @NonNull TextInputLayout nameInputLayout,
+      @NonNull TextInputLayout passwordInputLayout, @NonNull TextInputLayout phoneInputLayout,
+      @NonNull MaterialToolbar toolbar) {
     this.rootView = rootView;
     this.btnRegisterDriver = btnRegisterDriver;
     this.editDriverEmail = editDriverEmail;
     this.editDriverName = editDriverName;
     this.editDriverPassword = editDriverPassword;
     this.editDriverPhone = editDriverPhone;
+    this.emailInputLayout = emailInputLayout;
     this.imageView7 = imageView7;
+    this.nameInputLayout = nameInputLayout;
+    this.passwordInputLayout = passwordInputLayout;
+    this.phoneInputLayout = phoneInputLayout;
+    this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -80,7 +105,7 @@ public final class DriverRegisterBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnRegisterDriver;
-      Button btnRegisterDriver = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnRegisterDriver = ViewBindings.findChildViewById(rootView, id);
       if (btnRegisterDriver == null) {
         break missingId;
       }
@@ -109,14 +134,45 @@ public final class DriverRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.emailInputLayout;
+      TextInputLayout emailInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (emailInputLayout == null) {
+        break missingId;
+      }
+
       id = R.id.imageView7;
       ImageView imageView7 = ViewBindings.findChildViewById(rootView, id);
       if (imageView7 == null) {
         break missingId;
       }
 
-      return new DriverRegisterBinding((ScrollView) rootView, btnRegisterDriver, editDriverEmail,
-          editDriverName, editDriverPassword, editDriverPhone, imageView7);
+      id = R.id.nameInputLayout;
+      TextInputLayout nameInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (nameInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.passwordInputLayout;
+      TextInputLayout passwordInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (passwordInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.phoneInputLayout;
+      TextInputLayout phoneInputLayout = ViewBindings.findChildViewById(rootView, id);
+      if (phoneInputLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar;
+      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
+      return new DriverRegisterBinding((CoordinatorLayout) rootView, btnRegisterDriver,
+          editDriverEmail, editDriverName, editDriverPassword, editDriverPhone, emailInputLayout,
+          imageView7, nameInputLayout, passwordInputLayout, phoneInputLayout, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

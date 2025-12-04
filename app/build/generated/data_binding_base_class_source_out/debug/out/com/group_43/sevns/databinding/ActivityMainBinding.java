@@ -4,14 +4,14 @@ package com.group_43.sevns.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.button.MaterialButton;
 import com.group_43.sevns.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -19,25 +19,25 @@ import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
-  public final Button btnAmbulance;
+  public final MaterialButton btnAmbulance;
 
   @NonNull
-  public final Button btnDriverRegister;
+  public final MaterialButton btnDriverRegister;
 
   @NonNull
-  public final Button btnHospital;
+  public final MaterialButton btnHospital;
 
   @NonNull
-  public final Button btnHospitalRegister;
+  public final MaterialButton btnHospitalRegister;
 
   @NonNull
-  public final Button btnUser;
+  public final MaterialButton btnUser;
 
   @NonNull
-  public final Button btntrackCase;
+  public final MaterialButton btntrackCase;
 
   @NonNull
   public final ImageView imageView2;
@@ -45,10 +45,11 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final TextView textView;
 
-  private ActivityMainBinding(@NonNull LinearLayout rootView, @NonNull Button btnAmbulance,
-      @NonNull Button btnDriverRegister, @NonNull Button btnHospital,
-      @NonNull Button btnHospitalRegister, @NonNull Button btnUser, @NonNull Button btntrackCase,
-      @NonNull ImageView imageView2, @NonNull TextView textView) {
+  private ActivityMainBinding(@NonNull ScrollView rootView, @NonNull MaterialButton btnAmbulance,
+      @NonNull MaterialButton btnDriverRegister, @NonNull MaterialButton btnHospital,
+      @NonNull MaterialButton btnHospitalRegister, @NonNull MaterialButton btnUser,
+      @NonNull MaterialButton btntrackCase, @NonNull ImageView imageView2,
+      @NonNull TextView textView) {
     this.rootView = rootView;
     this.btnAmbulance = btnAmbulance;
     this.btnDriverRegister = btnDriverRegister;
@@ -62,7 +63,7 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -88,37 +89,37 @@ public final class ActivityMainBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btnAmbulance;
-      Button btnAmbulance = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnAmbulance = ViewBindings.findChildViewById(rootView, id);
       if (btnAmbulance == null) {
         break missingId;
       }
 
       id = R.id.btnDriverRegister;
-      Button btnDriverRegister = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnDriverRegister = ViewBindings.findChildViewById(rootView, id);
       if (btnDriverRegister == null) {
         break missingId;
       }
 
       id = R.id.btnHospital;
-      Button btnHospital = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnHospital = ViewBindings.findChildViewById(rootView, id);
       if (btnHospital == null) {
         break missingId;
       }
 
       id = R.id.btnHospitalRegister;
-      Button btnHospitalRegister = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnHospitalRegister = ViewBindings.findChildViewById(rootView, id);
       if (btnHospitalRegister == null) {
         break missingId;
       }
 
       id = R.id.btnUser;
-      Button btnUser = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btnUser = ViewBindings.findChildViewById(rootView, id);
       if (btnUser == null) {
         break missingId;
       }
 
       id = R.id.btntrackCase;
-      Button btntrackCase = ViewBindings.findChildViewById(rootView, id);
+      MaterialButton btntrackCase = ViewBindings.findChildViewById(rootView, id);
       if (btntrackCase == null) {
         break missingId;
       }
@@ -135,7 +136,7 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((LinearLayout) rootView, btnAmbulance, btnDriverRegister,
+      return new ActivityMainBinding((ScrollView) rootView, btnAmbulance, btnDriverRegister,
           btnHospital, btnHospitalRegister, btnUser, btntrackCase, imageView2, textView);
     }
     String missingId = rootView.getResources().getResourceName(id);

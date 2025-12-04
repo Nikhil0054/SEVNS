@@ -1,130 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/background_light"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="32dp"
-    android:paddingBottom="30dp">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation"
+            android:layout_marginBottom="@dimen/spacing_large">
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="308dp"
-                android:layout_height="298dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/border"
-                app:srcCompat="@drawable/logo" />
+                android:layout_width="@dimen/logo_size"
+                android:layout_height="@dimen/logo_size"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/logo"
+                android:contentDescription="@string/app_logo" />
 
-            <Button
-                android:id="@+id/btnUser"
-                android:layout_width="match_parent"
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUser"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:text="@string/report_accident"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btntrackCase"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:text="@string/track_case"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/spacing_small">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHospital"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="15dp"
-                android:backgroundTint="#F43232"
-                android:drawablePadding="12dp"
-                android:elevation="4dp"
-                android:padding="16dp"
-                android:text="🚨 Report Accident"
-                android:textColor="#fff"
-                android:textSize="20sp" />
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:text="@string/hospital_login" />
 
-            <Button
-                android:id="@+id/btntrackCase"
-                android:layout_width="307dp"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAmbulance"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                android:backgroundTint="#14A9a7"
-                android:text="Track Case"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnHospital"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#1A7DD6"
-                    android:elevation="4dp"
-                    android:text="Hospital Login"
-                    android:textColor="#fff"
-                    android:textSize="15sp" />
-
-                <Button
-                    android:id="@+id/btnAmbulance"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="7dp"
-                    android:backgroundTint="#145997"
-                    android:elevation="4dp"
-                    android:text="Driver Login"
-                    android:textColor="#fff"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:text="Click Below for Registration " />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnHospitalRegister"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#1A7DD6"
-                    android:elevation="4dp"
-                    android:text="Hospital Register"
-                    android:textColor="#fff"
-                    android:textSize="13sp" />
-
-                <Button
-                    android:id="@+id/btnDriverRegister"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="7dp"
-                    android:backgroundTint="#145997"
-                    android:elevation="4dp"
-                    android:text="Driver Register"
-                    android:textColor="#fff"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:text="@string/driver_login" />
 
         </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:text="@string/register_prompt"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHospitalRegister"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:text="@string/hospital_register" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDriverRegister"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:text="@string/driver_register" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

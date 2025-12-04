@@ -1,6 +1,0 @@
-com.group_43.sevns.test.app-core-1.7.0-0 C:\Users\Aman\.gradle\caches\8.13\transforms\36a5ccf3ee715c75f3431ff16a811976\transformed\core-1.7.0\res
-com.group_43.sevns.test.app-androidTest-1 C:\Users\Aman\StudioProjects\SEVNS\app\build\generated\res\resValues\androidTest\debug
-com.group_43.sevns.test.app-updated_navigation_xml-2 C:\Users\Aman\StudioProjects\SEVNS\app\build\generated\updated_navigation_xml\debugAndroidTest
-com.group_43.sevns.test.app-mergeDebugAndroidTestResources-3 C:\Users\Aman\StudioProjects\SEVNS\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.group_43.sevns.test.app-mergeDebugAndroidTestResources-4 C:\Users\Aman\StudioProjects\SEVNS\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.group_43.sevns.test.app-debugAndroidTest-5 C:\Users\Aman\StudioProjects\SEVNS\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
