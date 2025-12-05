@@ -12,6 +12,7 @@ dimen spacing_large
 dimen spacing_medium
 dimen spacing_small
 dimen spacing_xlarge
+drawable ambulance
 drawable border_rounded
 drawable driverlogin
 drawable hospitallogin

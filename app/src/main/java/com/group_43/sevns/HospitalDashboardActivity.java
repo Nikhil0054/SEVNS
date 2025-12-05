@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class HospitalDashboardActivity extends AppCompatActivity {
 
@@ -99,15 +100,8 @@ public class HospitalDashboardActivity extends AppCompatActivity {
                     if (nearestAccident != null) {
                         Log.d("HOSPITAL", "Nearest accident ID = " + nearestDocumentId);
                     }
-
-                    Toast.makeText(this,
-                            activeReports.isEmpty() ? "No new active cases." :
-                                    activeReports.size() + " active reports loaded.",
-                            Toast.LENGTH_SHORT).show();
                 });
     }
-
-
     // Distance calculator
     private double getDistance(double lat1, double lon1, double lat2, double lon2) {
         float[] results = new float[1];
@@ -144,18 +138,50 @@ public class HospitalDashboardActivity extends AppCompatActivity {
             Toast.makeText(this, "No nearest accident found!", Toast.LENGTH_SHORT).show();
             return;
         }
+        //Find an available driver
+        db.collection("Drivers")
+                .whereEqualTo("status", "Available")
+                .limit(1)
+                .get()
+                .addOnSuccessListener(driverSnap -> {
 
-        db.collection("Accidents")
-                .document(nearestDocumentId)
-                .update(
-                        "status", "Acknowledged",
-                        "driverId", "DRIVER_101",
-                        "hospitalId", hospitalId
-                )
-                .addOnSuccessListener(unused ->
-                        Toast.makeText(this, "Accident Accepted!", Toast.LENGTH_SHORT).show())
+
+                    if (!driverSnap.isEmpty()) {
+
+                        DocumentSnapshot driverDoc = driverSnap.getDocuments().get(0);
+                        String docUID = driverDoc.getId();// available driver UID
+                        String driverID = driverDoc.getString("Driver_ID");
+                        //Update accident info
+                        db.collection("Accidents")
+                                .document(nearestDocumentId)
+                                .update(
+                                        "status", "Acknowledged",
+                                        "driverId", driverID,
+                                        "hospitalId", hospitalId
+                                )
+                                .addOnSuccessListener(unused -> {
+
+                                    // Mark driver Unavailable
+                                    db.collection("Drivers")
+                                            .document(docUID)
+                                            .update("status", "Unavailable")
+                                            .addOnSuccessListener(u ->
+                                                    Toast.makeText(this, "Accident Accepted & Driver Assigned!", Toast.LENGTH_SHORT).show())
+                                            .addOnFailureListener(e ->
+                                                    Toast.makeText(this, "Driver status update failed!", Toast.LENGTH_SHORT).show());
+
+                                })
+                                .addOnFailureListener(e ->
+                                        Toast.makeText(this, "Accident update failed!", Toast.LENGTH_SHORT).show());
+
+                    } else {
+                        Toast.makeText(this, "No Available Driver Found!", Toast.LENGTH_SHORT).show();
+                    }
+
+                })
                 .addOnFailureListener(e ->
-                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show());
+                        Toast.makeText(this, "Driver search failed!", Toast.LENGTH_SHORT).show());
+
 
         fetchReports();
     }

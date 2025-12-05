@@ -98,7 +98,8 @@ public class DriverRegister extends AppCompatActivity {
                                 driverid,
                                 name,
                                 email,
-                                phone
+                                phone,
+                                "Unavailable"
                         );
 
                         db.collection("Drivers")
@@ -125,7 +126,7 @@ public class DriverRegister extends AppCompatActivity {
     public static class DriverRegisteration {
 
         public String Driver_ID;
-        public String name;
+        public String name, status;
         public String email;
         public String phone;
         // Empty constructor REQUIRED by Firebase
@@ -133,12 +134,13 @@ public class DriverRegister extends AppCompatActivity {
         }
 
         // Full constructor
-        public DriverRegisteration(String Driver_ID, String name, String email, String phone) {
+        public DriverRegisteration(String Driver_ID, String name, String email, String phone,  String status) {
 
             this.Driver_ID = Driver_ID;
             this.name = name;
             this.email = email;
             this.phone = phone;
+            this.status = status;
         }
 
     }

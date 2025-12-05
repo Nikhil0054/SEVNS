@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,8 +36,6 @@ import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
-import org.osmdroid.views.overlay.mylocation.IMyLocationConsumer;
-import org.osmdroid.views.overlay.mylocation.IMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.io.IOException;
@@ -179,7 +179,6 @@ public class DriverMapActivity extends AppCompatActivity {
                     + "\n\n" + assignedReport.getAddress());
             map.getOverlays().add(m);
 
-            // Set up location tracking with proper listener
             setupLocationTracking();
 
             map.invalidate();
@@ -198,6 +197,13 @@ public class DriverMapActivity extends AppCompatActivity {
             myLocationOverlay = new MyLocationNewOverlay(gpsProvider, map);
             myLocationOverlay.enableMyLocation();
             myLocationOverlay.enableFollowLocation();
+            Bitmap original = BitmapFactory.decodeResource(getResources(), R.drawable.ambulance);
+
+            int iconWidth = 70;
+            int iconHeight = 70;
+
+            Bitmap resizedIcon = Bitmap.createScaledBitmap(original, iconWidth, iconHeight, true);
+            myLocationOverlay.setDirectionIcon(resizedIcon);
 
             // Add custom location listener
             myLocationOverlay.runOnFirstFix(() -> {
@@ -441,6 +447,8 @@ public class DriverMapActivity extends AppCompatActivity {
                     lastRouteUpdateLocation = null;
                     assignedReport = null;
                     DocumentId = null;
+                    map.getOverlays().clear();
+
                     findAndDisplayAssignedReport();
                 })
                 .addOnFailureListener(e ->
